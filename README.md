@@ -3,7 +3,7 @@ the Android library for Api
 
 ## Features
 
-- Suppor Methods { Get , Put , Delete , Post }
+- Support Methods { Get , Put , Delete , Post }
 - Support Mvvm
 
 ## How To Use
