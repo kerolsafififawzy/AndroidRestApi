@@ -23,12 +23,12 @@ public class DeleteRestApi {
    *
    * */
 
-    public DeleteRestApi (URL urlSite) {
+    public DeleteRestApi (@NonNull URL urlSite) {
         this.urlSite = urlSite;
     }
 
 
-    public void Delete(TheResult result)
+    public void Delete(@NonNull TheResult result)
     {
         AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override

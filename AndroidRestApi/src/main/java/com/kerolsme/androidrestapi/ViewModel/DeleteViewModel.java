@@ -34,7 +34,7 @@ public class DeleteViewModel extends AndroidViewModel {
     }
 
 
-    public void Delete(URL urlSite)
+    public void Delete( @NonNull URL urlSite)
     {
         AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override

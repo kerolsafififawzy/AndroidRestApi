@@ -46,7 +46,7 @@ public class PostViewModel extends AndroidViewModel {
      *       @param  type  : Request Type
      *       @param  url : url for Site
      **/
-   public void Post(@NonNull HashMap<String, String> hashMap, RequestType type, URL url) {
+   public void Post(@NonNull HashMap<String, String> hashMap, @NonNull RequestType type, @NonNull URL url) {
      AppExecutors.getInstance().diskIO().execute(new Runnable() {
     @Override
     public void run() {
@@ -120,7 +120,7 @@ public class PostViewModel extends AndroidViewModel {
         }
         return output.toString();
     }
-    public String getType (RequestType type) {
+    private String getType (RequestType type) {
 
         if(type == RequestType.JSON) {
             return  "application/json";

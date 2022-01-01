@@ -45,7 +45,7 @@ public class PutViewModel extends AndroidViewModel {
      *       @param  type  : Request Type
      *       @param  url : url for Site
      **/
-   public void Put(@NonNull HashMap<String, String> hashMap, RequestType type,URL url) {
+   public void Put(@NonNull HashMap<String, String> hashMap, @NonNull RequestType type, @NonNull URL url) {
 
         AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override
@@ -119,7 +119,7 @@ public class PutViewModel extends AndroidViewModel {
     }
 
 
-    public String getType (RequestType type) {
+    private String getType (RequestType type) {
 
         if(type == RequestType.JSON) {
            return  "application/json";

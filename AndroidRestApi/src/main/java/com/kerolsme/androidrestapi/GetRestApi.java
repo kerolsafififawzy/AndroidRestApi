@@ -12,12 +12,12 @@ public class GetRestApi {
 
 
    private final URL urlSite;
-    public GetRestApi (URL urlSite) {
+    public GetRestApi (@NonNull URL urlSite) {
 
         this.urlSite = urlSite;
     }
 
-    public void Get(TheResult result){
+    public void Get(@NonNull TheResult result){
 
         AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override

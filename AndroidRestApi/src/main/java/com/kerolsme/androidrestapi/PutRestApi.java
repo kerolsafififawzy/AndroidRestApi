@@ -20,7 +20,7 @@ public class PutRestApi {
 
 
     URL url;
-   public PutRestApi ( URL url) {
+   public PutRestApi ( @NonNull URL url) {
        this.url = url;
 
     }
@@ -31,7 +31,7 @@ public class PutRestApi {
      *       @param  result : request response
      **/
 
-    public void Put(@NonNull HashMap<String, String> hashMap, RequestType type, TheResult result) {
+    public void Put(@NonNull HashMap<String, String> hashMap, @NonNull RequestType type, @NonNull TheResult result) {
 
         AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override
@@ -107,7 +107,7 @@ public class PutRestApi {
         return output.toString();
     }
 
-    public String getType (RequestType type) {
+    private String getType (RequestType type) {
 
         if(type == RequestType.JSON) {
             return  "application/json";

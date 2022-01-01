@@ -33,7 +33,7 @@ public class PostRestApi {
      *       @param  result : request response
     **/
 
-    public void Post(@NonNull HashMap<String, String> hashMap, RequestType type, TheResult result) {
+    public void Post(@NonNull HashMap<String, String> hashMap, @NonNull RequestType type, @NonNull TheResult result) {
         AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override
             public void run() {
@@ -104,7 +104,7 @@ public class PostRestApi {
         return output.toString();
     }
 
-    public String getType (RequestType type) {
+    private String getType (RequestType type) {
 
         if(type == RequestType.JSON) {
             return  "application/json";
