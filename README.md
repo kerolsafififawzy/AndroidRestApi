@@ -23,7 +23,7 @@ allprojects {
 ```gradle
 dependencies {
 
-	        implementation 'com.github.kerolsafififawzy:AndroidRestApi:1.0.1'
+	        implementation 'com.github.kerolsafififawzy:AndroidRestApi:1.0.2'
 	
       }
 ```
