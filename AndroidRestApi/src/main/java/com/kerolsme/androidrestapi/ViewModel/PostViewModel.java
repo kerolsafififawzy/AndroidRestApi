@@ -7,8 +7,6 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.kerolsme.androidrestapi.AppExecutors;
-import com.kerolsme.androidrestapi.RequestType;
-import com.kerolsme.androidrestapi.TheResult;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -43,10 +41,9 @@ public class PostViewModel extends AndroidViewModel {
 
     /**
      *       @param hashMap : key and Value
-     *       @param  type  : Request Type
      *       @param  url : url for Site
      **/
-   public void Post(@NonNull HashMap<String, String> hashMap, @NonNull RequestType type, @NonNull URL url) {
+   public void Post(@NonNull HashMap<String, String> hashMap , @NonNull URL url) {
      AppExecutors.getInstance().diskIO().execute(new Runnable() {
     @Override
     public void run() {
@@ -64,8 +61,8 @@ public class PostViewModel extends AndroidViewModel {
             String jsonObjectString = jsonObject != null ? jsonObject.toString() : null;
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("POST");
-            httpURLConnection.setRequestProperty("Content-Type", getType(type)); // The format of the content we're sending to the server
-            httpURLConnection.setRequestProperty("Accept", getType(type));// The format of response we want to get from the server
+            httpURLConnection.setRequestProperty("Content-Type", "application/json"); // The format of the content we're sending to the server
+            httpURLConnection.setRequestProperty("Accept", "application/json");// The format of response we want to get from the server
             httpURLConnection.setDoInput(true);
             httpURLConnection.setDoOutput(true);
 
@@ -119,13 +116,5 @@ public class PostViewModel extends AndroidViewModel {
             }
         }
         return output.toString();
-    }
-    private String getType (RequestType type) {
-
-        if(type == RequestType.JSON) {
-            return  "application/json";
-        }else {
-            return "application/xml";
-        }
     }
 }

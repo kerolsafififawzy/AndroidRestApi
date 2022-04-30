@@ -19,19 +19,19 @@ import java.util.Iterator;
 public class PutRestApi {
 
 
-    URL url;
-   public PutRestApi ( @NonNull URL url) {
+      private final URL url;
+
+      public PutRestApi ( @NonNull URL url) {
        this.url = url;
 
     }
 
     /**
      *       @param hashMap : key and Value
-     *       @param  type  : Request Type
      *       @param  result : request response
      **/
 
-    public void Put(@NonNull HashMap<String, String> hashMap, @NonNull RequestType type, @NonNull TheResult result) {
+    public void Put(@NonNull HashMap<String, String> hashMap , @NonNull TheResult result) {
 
         AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override
@@ -56,8 +56,8 @@ public class PutRestApi {
                     String jsonObjectString = jsonObject != null ? jsonObject.toString() : null;
                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                     httpURLConnection.setRequestMethod("PUT");
-                    httpURLConnection.setRequestProperty("Content-Type", getType(type)); // The format of the content we're sending to the server
-                    httpURLConnection.setRequestProperty("Accept", getType(type));// The format of response we want to get from the server
+                    httpURLConnection.setRequestProperty("Content-Type", "application/json"); // The format of the content we're sending to the server
+                    httpURLConnection.setRequestProperty("Accept", "application/json");// The format of response we want to get from the server
                     httpURLConnection.setDoInput(true);
                     httpURLConnection.setDoOutput(true);
 
@@ -107,12 +107,4 @@ public class PutRestApi {
         return output.toString();
     }
 
-    private String getType (RequestType type) {
-
-        if(type == RequestType.JSON) {
-            return  "application/json";
-        }else {
-            return "application/xml";
-        }
-    }
 }

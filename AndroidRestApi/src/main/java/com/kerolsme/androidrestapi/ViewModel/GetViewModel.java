@@ -24,7 +24,7 @@ public class GetViewModel extends  AndroidViewModel {
         }
 
 
-    public void Get(@NonNull URL urlSite){
+    public void Get(@NonNull URL urlSite) {
 
         AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override

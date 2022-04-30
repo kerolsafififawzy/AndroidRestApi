@@ -29,11 +29,10 @@ public class PostRestApi {
 
     /**
      *       @param hashMap : key and Value
-     *       @param  type  : Request Type
      *       @param  result : request response
     **/
 
-    public void Post(@NonNull HashMap<String, String> hashMap, @NonNull RequestType type, @NonNull TheResult result) {
+    public void Post(@NonNull HashMap<String, String> hashMap , @NonNull TheResult result) {
         AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override
             public void run() {
@@ -55,8 +54,8 @@ public class PostRestApi {
                     String jsonObjectString = jsonObject != null ? jsonObject.toString() : null;
                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                     httpURLConnection.setRequestMethod("POST");
-                    httpURLConnection.setRequestProperty("Content-Type", getType(type)); // The format of the content we're sending to the server
-                    httpURLConnection.setRequestProperty("Accept", getType(type));// The format of response we want to get from the server
+                    httpURLConnection.setRequestProperty("Content-Type", ""); // The format of the content we're sending to the server
+                    httpURLConnection.setRequestProperty("Accept", "application/json");// The format of response we want to get from the server
                     httpURLConnection.setDoInput(true);
                     httpURLConnection.setDoOutput(true);
 
@@ -84,6 +83,7 @@ public class PostRestApi {
 
                     result.Error(HttpURLConnection.HTTP_INTERNAL_ERROR, e);
 
+
                 }
             }
         });
@@ -102,15 +102,6 @@ public class PostRestApi {
             }
         }
         return output.toString();
-    }
-
-    private String getType (RequestType type) {
-
-        if(type == RequestType.JSON) {
-            return  "application/json";
-        }else {
-            return "application/xml";
-        }
     }
 
 }
