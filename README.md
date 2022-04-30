@@ -53,7 +53,7 @@ PutViewModel.class
  PostRestApi postRestApi = new PostRestApi(new URL("https://RestApi"));
         HashMap hashMap = new HashMap();
         hashMap.put("name","Kerols");
-        postRestApi.Post(hashMap, RequestType.JSON, new TheResult() {
+        postRestApi.Post(hashMap, new TheResult() {
             @Override
             public void Error(int errorCode, Throwable throwable) {
                 
@@ -70,7 +70,7 @@ PutViewModel.class
  PostViewModel postViewModel  = new ViewModelProvider(MainActivity.this).get(PostViewModel.class);
         HashMap hashMap = new HashMap();
         hashMap.put("name","Kerols");
-        postViewModel.Post(hashMap,RequestType.JSON,new URL("https://RestApi"));
+        postViewModel.Post(hashMap,new URL("https://RestApi"));
         postViewModel.getMutableLiveData().observe(MainActivity.this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
